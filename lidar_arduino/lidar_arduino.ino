@@ -1,20 +1,7 @@
-/*
-   Program: Lidar Render Bot
-   By: Travis Ledo
-   Date: Jan 12th 2020
-   Notes: This uses an Arduino Mega with multiple serial ports to avoid the SoftwareSerial and Servo conflicts.
-*/
-
-
-
-
 #include <Servo.h>
-#include "CustomTFMini.h" //Needed to modify somecode in the original TFMini library
 
 Servo tiltServo;
 Servo panServo;
-
-TFMini tfmini;
 
 String incomingByte; // for incoming serial data
 
@@ -196,10 +183,7 @@ void setup() {
   Serial.begin(115200); //For usb/bt data?
 
   // Step 2: Initialize the data rate for TFMini
-  Serial1.begin(TFMINI_BAUDRATE);
-
-  // Step 3: Initialize the TF Mini sensor
-  tfmini.begin(&Serial1);
+  Serial1.begin(115200);
 
   panServo.attach(10);  // attaches the servo on pin
   tiltServo.attach(11);  // attaches the servo on pin
